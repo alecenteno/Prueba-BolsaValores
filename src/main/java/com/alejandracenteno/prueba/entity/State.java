@@ -1,16 +1,13 @@
 package com.alejandracenteno.prueba.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -22,7 +19,8 @@ public class State implements Serializable{
 	private static final long serialVersionUID = 1426212227928307139L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Nullable
 	private int idstate;
 	
 	@Column(length = 100)
@@ -31,12 +29,11 @@ public class State implements Serializable{
 	@Column(length = 2)
 	private String abbreviation;
 	
-	@Column(length = 3)
-	private int phoneAreaCode;
+	@Column(length = 3, name = "phoneareacode")
+	private int phoneareacode;
 	
-	@ManyToOne
-	@JoinColumn(name="regionID")
-	private Region region;
+	@Column(length = 3)
+	private int regionID;
 	
 	public State() {
 		
@@ -66,21 +63,20 @@ public class State implements Serializable{
 		this.abbreviation = abbreviation;
 	}
 
-	public int getPhoneAreaCode() {
-		return phoneAreaCode;
+	public int getRegionID() {
+		return regionID;
 	}
 
-	public void setPhoneAreaCode(int phoneAreaCode) {
-		this.phoneAreaCode = phoneAreaCode;
+	public void setRegionID(int regionID) {
+		this.regionID = regionID;
 	}
 
-
-	public Region getRegion() {
-		return region;
+	public int getPhoneareacode() {
+		return phoneareacode;
 	}
 
-	public void setRegion(Region region) {
-		this.region = region;
+	public void setPhoneareacode(int phoneareacode) {
+		this.phoneareacode = phoneareacode;
 	}
 
 

@@ -20,7 +20,7 @@ public class PlaceName implements Serializable{
 	private static final long serialVersionUID = -5094274184598628437L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idplacename;
 	
 	@Column(length = 100)
@@ -29,9 +29,8 @@ public class PlaceName implements Serializable{
 	@Column(length = 5)
 	private String postalcode;
 	
-	@ManyToOne
-    @JoinColumn(name = "countyid")
-	private County county;
+	@Column(name = "countyid")
+	private int countyid;
 
 	
 	public int getIdplacename() {
@@ -58,13 +57,13 @@ public class PlaceName implements Serializable{
 		this.postalcode = postalcode;
 	}
 
-	public County getCounty() {
-		return county;
+	public int getCountyid() {
+		return countyid;
 	}
 
-	public void setCounty(County county) {
-		this.county = county;
+	public void setCountyid(int countyid) {
+		this.countyid = countyid;
 	}
 
-
+	
 }
